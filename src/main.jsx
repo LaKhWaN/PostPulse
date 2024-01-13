@@ -37,8 +37,8 @@ import Nav from "./components/Navigation.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
     <Router>
+      <App />
       <Routes>
         <Route element={<Feed />} path="/"></Route>
         <Route element={<Feed />} path="/feed"></Route>

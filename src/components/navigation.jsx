@@ -14,6 +14,7 @@ const LoggedInComp = () => {
 };
 
 const Nav = () => {
+  const auth = localStorage.getItem("auth");
   return (
     <>
       <div className="navbar-div custom-navcss">
@@ -52,14 +53,13 @@ const Nav = () => {
             <div className="collapse navbar-collapse" id="navcol-1">
               <ul className="navbar-nav mx-auto"></ul>
               {/* If logged in then display the profile pic */}
-              {<LoggedInComp />}
-              <a
+              {auth ? <LoggedInComp /> : ""}
+              <button
                 className="btn btn-primary shadow custom-button"
                 role="button"
-                href="signup.html"
               >
-                Sign up
-              </a>
+                {auth ? "Log out" : "Sign Up"}
+              </button>
             </div>
           </div>
         </nav>
