@@ -11,6 +11,7 @@ import "./assets/css/animate.min.css";
 import "./assets/css/bs-theme-overrides.css";
 import "./assets/css/Profile-Picture-With-Badge-profile-pic-with-badge.css";
 import "./assets/css/Profile-Picture-With-Badge.css";
+import "./assets/css/custom.css"
 
 // Importing all JS
 import "./assets/bootstrap/js/bootstrap.min.js";
