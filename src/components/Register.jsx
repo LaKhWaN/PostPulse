@@ -1,4 +1,4 @@
-function Login() {
+function Register() {
   return (
     <>
       <section className="py-5">
@@ -6,13 +6,13 @@ function Login() {
           <div className="row mb-4 mb-lg-5">
             <div className="col-md-8 col-xl-6 text-center mx-auto">
               <p className="fw-bold mb-2" style={{ color: "#007df8" }}>
-                Login
+                Sign up
               </p>
-              <h2 className="fw-bold">Welcome back</h2>
+              <h2 className="fw-bold">Welcome</h2>
             </div>
           </div>
           <div className="row d-flex justify-content-center">
-            <div className="col-md-6 col-xl-4">
+            <div className="col-md-6 col-xl-6">
               <div className="card" style={{ background: "#06151c" }}>
                 <div className="card-styling card-body text-center d-flex flex-column align-items-center">
                   <div
@@ -31,6 +31,22 @@ function Login() {
                     </svg>
                   </div>
                   <form method="post">
+                    <div className="mb-3 col-md-12">
+                      <input
+                        className="form-control"
+                        type="text"
+                        name="first_name"
+                        placeholder="First Name"
+                      />
+                    </div>
+                    <div className="mb-3 col-md-12">
+                      <input
+                        className="form-control"
+                        type="text"
+                        name="last_name"
+                        placeholder="Last Name"
+                      />
+                    </div>
                     <div className="mb-3">
                       <input
                         className="form-control"
@@ -48,15 +64,23 @@ function Login() {
                       />
                     </div>
                     <div className="mb-3">
+                      <input
+                        className="form-control"
+                        type="password"
+                        name="confirm_password"
+                        placeholder="Confirm Password"
+                      />
+                    </div>
+                    <div className="mb-3">
                       <button
                         className="custom-btn btn shadow-none d-block w-100"
                         type="submit"
                       >
-                        Log in
+                        Sign up
                       </button>
                     </div>
                     <p style={{ color: "rgb(0,125,248)" }}>
-                      Forgot your password?
+                      Already have an account? Login
                     </p>
                   </form>
                 </div>
@@ -69,4 +93,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
