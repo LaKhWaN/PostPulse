@@ -1,4 +1,8 @@
-*
-
-!src/
-!.gitignore
+node_modules
+public
+.eslintrc.cjs
+index.html
+package-lock.json
+package.json
+README.md
+vite.config.js
