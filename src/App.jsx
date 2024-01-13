@@ -1,7 +1,11 @@
+import Register from "./components/Register";
+import Login from "./components/Login";
+
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Login />
+      {/* <Register /> */}
     </>
   );
 }

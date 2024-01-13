@@ -1,0 +1,14 @@
+.card-styling {
+    background: #1a2630;
+    border-radius: 50px;
+    box-shadow: 5px 5px 20px 0px rgba(40,53,63,0.4);
+}
+
+.custom-btn {
+    background: #1a2630;
+    color: #f5fcfe;
+    border-width: 1px;
+    border-color: #28353f;
+    border-bottom-style: solid;
+    border-bottom-color: #28353f;
+}
