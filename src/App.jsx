@@ -1,4 +1,4 @@
-import Nav from './components/navigation'
+import Nav from './components/Navigation'
 
 import Register from "./components/Register";
 import Login from "./components/Login";

@@ -3,9 +3,7 @@ import App from "./App.jsx";
 import ReactDOM from "react-dom/client";
 
 // Components
-
-// Components
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 // Importing all CSS
 import "./assets/bootstrap/css/bootstrap.min.css";
