@@ -1,0 +1,29 @@
+.profile-header-container {
+  margin-right: 10px;
+}
+
+.profile-header-img {
+}
+
+.profile-header-img > img.img-circle {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid var(--bs-success);
+}
+
+.rank-label-container {
+  margin-top: -20px;
+  margin-right: 5px;
+  text-align: right;
+}
+
+.label.label-default.rank-label {
+  background-color: var(--bs-success);
+  padding: 5px;
+  border-radius: 50%;
+}
+
+input {
+}
+
