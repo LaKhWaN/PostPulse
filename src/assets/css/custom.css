@@ -11,4 +11,30 @@
     border-color: #28353f;
     border-bottom-style: solid;
     border-bottom-color: #28353f;
+}.custom-navcss {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.custom-navbar {
+    border-radius: 30px;
+    background: rgb(26,38,48, 0.2);
+    backdrop-filter: blur(15px);
+    margin: 25px 25px;
+    position: fixed;
+    width: 75%;
+    text-align: left;
+    justify-self: center;
+    overflow: visible;
+}
+
+.custom-span {
+    background: #007df8;
+}
+
+.custom-button {
+    background: rgb(245,252,254);
+    color: #06151c;
 }
