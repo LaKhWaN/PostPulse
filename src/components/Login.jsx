@@ -1,17 +1,84 @@
 import { useState } from "react";
-import { emailAuth, users } from "../firebase";
+import {
+  Gauth,
+  emailAuth,
+  provider,
+  signInWithPopup,
+  users,
+} from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoogleIcon from "@mui/icons-material/Google";
 
 function Login() {
+  if (localStorage.getItem("auth")) navigate("/");
+
   const navigate = useNavigate();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
+  const handleGoogleLoginBtn = async () => {
+    try {
+      const result = await signInWithPopup(Gauth, provider);
+      const data = result.user;
+
+      const usersData = await users.where("email", "==", data.email).get();
+
+      if (!usersData.empty) {
+        const isGoogleLogin = usersData.docs[0].data().GAuth || false;
+
+        if (isGoogleLogin) {
+          toast.success("Logged in successfully with Google!");
+          localStorage.setItem("auth", true);
+          navigate("/");
+        } else {
+          toast.error(
+            "This account is registered with Google, please use Google Login to continue"
+          );
+        }
+      } else {
+        const generatedUsername = data.displayName
+          .replace(/\s/g, "")
+          .toLowerCase();
+
+        await users.add({
+          firstname: data.displayName,
+          lastname: "",
+          email: data.email,
+          username: generatedUsername,
+          GAuth: true, // Set GAuth to true for Google login
+        });
+
+        toast.success("New user registered successfully with Google!");
+      }
+    } catch (error) {
+      toast.error("Error signing in with Google:", error);
+    }
+  };
+
   const handleLoginBtn = async () => {
     try {
-      await emailAuth.signInWithEmailAndPassword(email, password);
+      // Check if the user account is registered with Google login
+      const userDoc = await users.where("email", "==", email).get();
+
+      if (!userDoc.empty) {
+        const isGoogleLogin = userDoc.docs[0].data().GAuth || false;
+
+        if (isGoogleLogin) {
+          // If registered with Google login, inform the user
+          toast.info(
+            "This email is registered with Google login. Please use Google login."
+          );
+          // You can also redirect to the Google login page or handle it as needed
+          return;
+        }
+      }
+      const { user } = await emailAuth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+      // Continue with regular login
       toast.success("Logged in successfully!");
 
       setTimeout(() => {
@@ -22,6 +89,7 @@ function Login() {
       // Handle errors
       var errorCode = error.code;
       var errorMessage = error.message;
+
       if (errorCode === "auth/invalid-password") {
         toast.error("Wrong password.");
       } else if (errorCode === "auth/invalid-credential") {
@@ -113,6 +181,15 @@ function Login() {
                   >
                     Reset Your Password{" "}
                   </p>
+                  <hr />
+                  <button
+                    onClick={handleGoogleLoginBtn}
+                    className="custom-btn btn"
+                    style={{ marginBottom: "1rem" }}
+                  >
+                    <i style={{ marginRight: "0.5rem" }}>{<GoogleIcon />}</i>
+                    Log in with Google
+                  </button>
                 </div>
               </div>
             </div>
