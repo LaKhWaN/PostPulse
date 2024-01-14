@@ -5,6 +5,8 @@ import { ToastContainer, toast, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
+  if (localStorage.getItem("auth")) navigate("/");
+
   const navigate = useNavigate();
 
   let [username, setUsername] = useState("");

@@ -6,6 +6,8 @@ import "firebase/compat/auth";
 
 import "firebase/firestore";
 import "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+
 import "firebase/analytics";
 
 const firebaseConfig = {
@@ -25,4 +27,4 @@ const users = firestore.collection("users");
 
 const emailAuth = firebase.auth();
 
-export { emailAuth, provider, firestore, users };
+export { Gauth, emailAuth, provider, firestore, users, signInWithPopup };
