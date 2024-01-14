@@ -1,12 +1,14 @@
 import Profile from "./Profile";
 import NewPost from "./NewPost";
 import Post from "./Post";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function makePost(paras) {
   return (
     <>
-      <div class="row" style={{ marginTop: "5%" }}>
-        <div class="col-md-12" style={{ marginBottom: "1rem" }}>
+      <div className="row" style={{ marginTop: "5%" }}>
+        <div className="col-md-12" style={{ marginBottom: "1rem" }}>
           {<Post />}
         </div>
       </div>
@@ -14,6 +16,13 @@ function makePost(paras) {
   );
 }
 function Feed() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("auth")) {
+      navigate("/login");
+    }
+  }, [localStorage.getItem("auth")]);
   return (
     <>
       <section className="py-5" style={{ marginTop: "5rem" }}>

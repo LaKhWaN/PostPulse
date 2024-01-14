@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Flip } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const LoggedInComp = () => {
   return (
     <>
@@ -15,6 +19,19 @@ const LoggedInComp = () => {
 
 const Nav = () => {
   const auth = localStorage.getItem("auth");
+  const navigate = useNavigate();
+
+  const handleBtn = () => {
+    if (auth) {
+      toast.warning("Logged out sucessfully!");
+      localStorage.clear();
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    } else {
+      navigate("/register");
+    }
+  };
   return (
     <>
       <div className="navbar-div custom-navcss">
@@ -57,6 +74,7 @@ const Nav = () => {
               <button
                 className="btn btn-primary shadow custom-button"
                 role="button"
+                onClick={handleBtn}
               >
                 {auth ? "Log out" : "Sign Up"}
               </button>
@@ -64,6 +82,19 @@ const Nav = () => {
           </div>
         </nav>
       </div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Flip}
+        theme="dark"
+      />
     </>
   );
 };
